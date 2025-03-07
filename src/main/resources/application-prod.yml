@@ -87,7 +87,7 @@ spring:
                 registration:
                     google:
                         client-id: 260686576423-cd9o4qepuuq5mfnprhbftso2h3h8nqv5.apps.googleusercontent.com
-                        client-secret: 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
+                        client-secret: fakeKey
                         redirect-uri: http://ec2-43-202-32-28.ap-northeast-2.compute.amazonaws.com:8085/login/oauth2/code/google
                         scope:
                             - email
@@ -95,7 +95,7 @@ spring:
 
                     kakao:
                         client-id: e854d74518514c68abdc06c8cd750f0f
-                        client-secret: 0PlxjR5lcZSTbH5aXvrJhaT53s91vaBI
+                        client-secret: fakeKey
                         scope:
                             - profile_nickname
                             - account_email
@@ -106,7 +106,7 @@ spring:
 
                     naver:
                         client-id: hnfj6EGOh8O38QYjYbjI
-                        client-secret: dhMEtyQF55
+                        client-secret: fakeKey
                         scope:
                             - name
                             - email
