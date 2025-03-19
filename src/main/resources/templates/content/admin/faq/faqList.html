@@ -241,8 +241,6 @@
                         .catch(err => {
                             console.log(err);
                         });
-                    const childId = this.value;
-                    // loadFaqList(1, parentId, childId);
                 });
             }
 
@@ -256,7 +254,7 @@
                 });
             }
 
-            // 페이지네이션 링크에 이벤트 리스너 추가
+            // 페이지네이션 링크에 이벤트 리스너 추가 (카테고리를 선택하지 않았을 때)
             setupPaginationListeners();
         });
 
@@ -352,20 +350,16 @@
             const paginationElement = document.querySelector('.faqpage');
             if (!paginationElement) return;
 
-            paginationElement.innerHTML = '';
+            paginationElement.innerHTML = '';  // 기존 요소 초기화
 
             // 이전 버튼
             if (faqPageResponseDTO.prev) {
-                const prevPage = faqPageResponseDTO.start - 1;
+                let prevPage = faqPageResponseDTO.start - 1;
                 let prevUrl = `/admin/faq/list?pg=${prevPage}`;
                 if (parentId) prevUrl += `&parentId=${parentId}`;
                 if (childId) prevUrl += `&childId=${childId}`;
 
-                const prevLink = document.createElement('a');
-                prevLink.href = prevUrl;
-                prevLink.className = "faqprev";
-                prevLink.textContent = "이전";
-                paginationElement.appendChild(prevLink);
+                paginationElement.innerHTML += `<a href="${prevUrl}" class="faqprev">이전</a>`;
             }
 
             // 페이지 번호
@@ -374,25 +368,17 @@
                 if (parentId) pageUrl += `&parentId=${parentId}`;
                 if (childId) pageUrl += `&childId=${childId}`;
 
-                const pageLink = document.createElement('a');
-                pageLink.href = pageUrl;
-                pageLink.className = num === faqPageResponseDTO.pg ? 'faqcurrent' : 'faqnum';
-                pageLink.textContent = num;
-                paginationElement.appendChild(pageLink);
+                paginationElement.innerHTML += `<a href="${pageUrl}" class="${num === faqPageResponseDTO.pg ? 'faqcurrent' : 'faqnum'}">${num}</a>`;
             }
 
             // 다음 버튼
             if (faqPageResponseDTO.next) {
-                const nextPage = faqPageResponseDTO.end + 1;
+                let nextPage = faqPageResponseDTO.end + 1;
                 let nextUrl = `/admin/faq/list?pg=${nextPage}`;
                 if (parentId) nextUrl += `&parentId=${parentId}`;
                 if (childId) nextUrl += `&childId=${childId}`;
 
-                const nextLink = document.createElement('a');
-                nextLink.href = nextUrl;
-                nextLink.className = "faqnext";
-                nextLink.textContent = "다음";
-                paginationElement.appendChild(nextLink);
+                paginationElement.innerHTML += `<a href="${nextUrl}" class="faqnext">다음</a>`;
             }
 
             // 페이지네이션 링크에 이벤트 리스너 추가
