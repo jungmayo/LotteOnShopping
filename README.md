@@ -1,5 +1,4 @@
-# team3-lotteon-project
-[배포주소](http://ec2-43-202-32-28.ap-northeast-2.compute.amazonaws.com:8085/)
+
 
 
 
@@ -77,7 +76,3 @@ BE : 쿠폰 등록 및 사용 기능구현, 장바구니 기능구현, 마이페
     - Redis
 
 
-# lotte-project
-# team3-lotteon-project
-# team3-lotteon-project
-# team3-lotteon-project
